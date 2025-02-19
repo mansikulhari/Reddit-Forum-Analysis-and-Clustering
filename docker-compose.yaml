@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: easy
+      MYSQL_DATABASE: reddit
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql-scripts/:/docker-entrypoint-initdb.d/
+volumes:
+  db_data:
